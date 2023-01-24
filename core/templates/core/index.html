@@ -1,0 +1,117 @@
+<html lang="en-us" dir="ltr">
+
+<head>
+    <meta charset="utf-8">
+    <title>The install worked successfully! Congratulations!</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="/static/admin/css/fonts.css">
+    <style>
+        html {
+            line-height: 1.15;
+        }
+
+        a {
+            color: #19865C;
+        }
+
+        header {
+            border-bottom: 1px solid #efefef;
+        }
+
+        body {
+            max-width: 960px;
+            color: #525252;
+            font-family: Roboto, sans-serif;
+            margin: 0 auto;
+        }
+
+        main {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            min-height: 50%;
+        }
+
+        header {
+            display: grid;
+            align-items: self-end;
+            justify-content: space-between;
+            gap: 7px;
+            padding-top: 20px;
+            padding-bottom: 10px;
+        }
+
+        .logo {
+            font-weight: 700;
+            font-size: 1.375rem;
+            text-decoration: none;
+        }
+
+        h1 {
+            font-size: 1.375rem;
+            max-width: 32rem;
+        }
+
+        .content {
+            min-width: 400px;
+        }
+
+        .submit {
+            min-width: 200px;
+            padding: 5px;
+            background-color: #19865C;
+            color: white;
+        }
+
+        .submit:hover {
+            cursor: pointer;
+        }
+
+        .mt-20 {
+            margin-top: 20px;
+        }
+
+        .result {
+            background-color: #efefef;
+            padding: 10px;
+        }
+        
+        .divider {
+            margin-top: 40px;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+
+<body cz-shortcut-listen="true">
+    <header>
+        <a class="logo" href="https://www.passthrough.com/" target="_blank" rel="noopener">
+            pdfpass
+        </a>
+    </header>
+    <main>
+        <div class="content">
+            <form method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                <h1>Select a PDF</h1>
+                <div class="mt-20">
+                    {{form.file}}
+                </div>
+                <div class="mt-20">
+                    <input type="submit" class="submit" />
+                </div>
+            </form>
+
+            {% if text %}
+            <hr class="divider" />
+            <h1>Result</h1>
+            <div class="result mt-20">
+                {{ text }}
+            </div>
+            {% endif %}
+        </div>
+    </main>
+</body>
+
+</html>
