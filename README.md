@@ -40,8 +40,8 @@ You can access the server on http://localhost:8000
 
 | Key         | Description | Example |
 | -----------  | ----------- |----------- |
-| `SECRET_KEY` | A string that is used to provide cryptographic signing, and should be kept secret. | `django-insecure-d462upu)4h4fx!8vl1%g+^#rjk)m#y^1tsul89bq^ttgni+9k=` |
-| `DB_URL` | The connection string to the database | `postgres://user:password@host:port/dbname` |
-| `ALLOWED_HOSTS` | A list of host/domain names that your Django site is allowed to serve. The format for the environment variable is a comma separated string. | `localhost,otherdomain` |
-| `GS_BUCKET_NAME` | Google Storage's bucket name to store uploaded files | `web_app_bucket` |
-| `GS_CREDENTIALS_FILE` | The path to a service account file. If this variable is not available, it will use GOOGLE_APPLICATION_CREDENTIALS which is typically available in google cloud services. | `/path/bucket_service_account.json` |
+| `SECRET_KEY` | A string that is used to provide cryptographic signing, and should be kept secret. If NOT set, the application will not be executed. | `django-insecure-d462upu)4h4fx!8vl1%g+^#rjk)m#y^1tsul89bq^ttgni+9k=` |
+| `DB_URL` | The connection string to the database. It must be either sqlite or postgres. If NOT set, the application will not execute. You can use sqlite while you don’t have a postgres database set. | `postgres://user:password@host:port/dbname` |
+| `ALLOWED_HOSTS` | A list of host/domain names that your Django site is allowed to serve from. If NOT set, the application will reject requests from any domains. | `localhost,otherdomain` |
+| `GS_BUCKET_NAME` | Google Storage's bucket name to store uploaded files. If NOT set, the application will store the file locally. | `web_app_bucket` |
+| `GS_CREDENTIALS_FILE` | The path to a service account file. if NOT set, it will use GOOGLE_APPLICATION_CREDENTIALS which is typically available in google cloud services. | `/path/bucket_service_account.json` |
