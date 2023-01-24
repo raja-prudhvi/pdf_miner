@@ -2,6 +2,8 @@
 
 A Python server that renders the user interface, accepts files from users, and extracts text from PDFs.
 
+![Screenshot of the application](/demo.png?raw=true "Demo")
+
 ## Getting started
 
 
