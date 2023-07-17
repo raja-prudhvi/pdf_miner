@@ -1,6 +1,5 @@
 import environ
 from pathlib import Path
-from google.oauth2 import service_account
 
 env = environ.Env(DEBUG=(bool, False))
 
@@ -11,11 +10,9 @@ environ.Env.read_env(BASE_DIR / ".env")
 
 SECRET_KEY = env("SECRET_KEY")
 
-DEBUG = env("DEBUG")
+DEBUG = env("DEBUG", default=False)
 
-ALLOWED_HOSTS = env("ALLOWED_HOSTS", default="").split(",")
-
-CSRF_TRUSTED_ORIGINS = [f"https://{host}" for host in ALLOWED_HOSTS]
+ALLOWED_HOSTS = ["*"]
 
 INSTALLED_APPS = [
     "django.contrib.admin",
@@ -87,17 +84,3 @@ USE_TZ = True
 STATIC_URL = "static/"
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
-
-GS_BUCKET_NAME = env("GS_BUCKET_NAME", default=None)
-
-GS_CREDENTIALS_FILE = env("GS_CREDENTIALS_FILE", default=None)
-
-if GS_BUCKET_NAME:
-    DEFAULT_FILE_STORAGE = "storages.backends.gcloud.GoogleCloudStorage"
-
-    if GS_CREDENTIALS_FILE:
-        GS_CREDENTIALS = service_account.Credentials.from_service_account_file(
-            GS_CREDENTIALS_FILE
-        )
-    else:
-        GS_CREDENTIALS = service_account.Credentials()

@@ -17,9 +17,7 @@ class IndexView(FormView):
     def form_valid(self, form):
         file = form.files["file"]
         text = extract_text(io.BytesIO(file.read()))
-
-        UploadedFile.objects.create(file=file, text=text)
-
+        UploadedFile.objects.create(text=text)
         return render(
             self.request,
             template_name=self.template_name,
