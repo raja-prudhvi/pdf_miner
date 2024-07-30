@@ -9,8 +9,8 @@ services:
       DEBUG: 'True'
       DB_URL: postgres://passthrough:passthrough@pdf_miner_db:5432/pdf_miner
       DB_HOST: pdf_miner_db
-    volumes:
-      - .:/app
+    # volumes:
+    #   - .:/app
     depends_on:
       - pdf_miner_db
 

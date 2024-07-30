@@ -3,3 +3,5 @@
 !config
 !manage.py
 !requirements.txt
+!fixture.json
+!entrypoint.sh

@@ -1,5 +1,7 @@
 #!/bin/bash
 
+python manage.py collectstatic --noinput
+
 function postgres_ready() {
   pg_isready -h "${DB_HOST}" > /dev/null 2>&1
 }
@@ -12,4 +14,5 @@ done
 >&2 echo "PostgreSQL is up - executing command"
 
 python manage.py migrate
+python manage.py loaddata fixture.json
 exec "$@"

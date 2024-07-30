@@ -7,7 +7,7 @@ class UploadedFile(models.Model):
     text = models.TextField(blank=True)
 
     def __str__(self):
-        return self.file.name
+        return f"<UploadedFile: {self.id}>"
 
     def get_absolute_url(self):
         return reverse('pdf_miner:uploaded_file_detail', kwargs={'pk': self.pk})
