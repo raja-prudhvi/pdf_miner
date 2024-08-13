@@ -7,8 +7,8 @@ services:
     environment:
       SECRET_KEY: 'django-insecure-d462upu)4h4fx!8vl1%g+^#rjk)m#y^1tsul89bq^ttgni+9k='
       DEBUG: 'True'
-      DB_URL: postgres://passthrough:passthrough@pdf_miner_db:5432/pdf_miner
-      DB_HOST: pdf_miner_db
+      DB_URL: postgres://passthrough:passthrough@35.233.251.211:5432/pdf_miner
+      DB_HOST: "35.233.251.211"
     # volumes:
     #   - .:/app
     depends_on:
