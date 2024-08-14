@@ -1,6 +1,8 @@
 
 # PDF Miner Infrastructure Setup
 
+We will only use VPC, GKE, DOCKER, ARTIFACT REGISTRY, SQLLITE db, Kubernetes Service of type load balancer for the sake of this assignement.
+
 This assignment involves three repositories:
 
 1. **[pdf_miner_infra](https://github.com/raja-prudhvi/pdf_miner_infra):** This repository contains the infrastructure setup needed for the assignment.
@@ -98,8 +100,11 @@ If the application is running successfully, you should see the HTML output indic
   ```
 
 ### Notes:
-- The PostgreSQL module was not used due to permission issues. The SQLite database was chosen as an alternative.
-- The PostgreSQL module was successfully deployed but had issues connecting from GKE, despite the connection being successful using netcat.
+- The reason i could not use postgresql db module is because the module needs admin previleges, but my SA does not have it for this assignment.
+
+Another reason i did not use postgresql which i spinned up already using this https://github.com/raja-prudhvi/pdf_miner_modules/blob/main/postgresql/main.tf  is because, i tried testing the connection from GKE to postgresqldb using netcat, it works like a charm. It was working because i hard-coded (https://github.com/raja-prudhvi/pdf_miner_modules/blob/main/postgresql/main.tf#L27 ) GKE external ip in the authorized users list in the code. ( which is not a fun way of implementing. )
+But i went along with it for the sake of assignment. After spending some time on this, PDF_MINER app was unable to connect even the
+netcat test was successful. it was weird. So due to time contrainst for now, i went with sqlite db.
 
 ### Final Comments:
 - The entrypoint script was modified to bypass PostgreSQL and use SQLite instead.
