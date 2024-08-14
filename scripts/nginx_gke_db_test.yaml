@@ -1,0 +1,30 @@
+# This file was only used to test the connection from postgresql to the db
+# u can test using netcat command after deploying this 
+# nc -zv <private/public ip of the db> 5432
+# u can ignore this file for the sake of this assigment 
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nginx-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: nginx
+  template:
+    metadata:
+      labels:
+        app: nginx
+    spec:
+      containers:
+      - name: nginx
+        image: nginx:latest
+        command: ["sleep", "infinity"]  # Keeps the container running.
+        resources:
+          requests:
+            cpu: "20m"
+            memory: "20Mi" 
+          limits:
+            cpu: "20m"
+            memory: "20Mi"

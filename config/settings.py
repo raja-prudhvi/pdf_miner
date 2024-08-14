@@ -55,8 +55,16 @@ TEMPLATES = [
 
 WSGI_APPLICATION = "config.wsgi.application"
 
+# DATABASES = {
+#     "default": env.db("DB_URL", default="sqlite:///db.sqlite3"),
+# }
+
+# Use SQLite as the default database
 DATABASES = {
-    "default": env.db("DB_URL", default="sqlite:///db.sqlite3"),
+    "default": {
+        "ENGINE": "django.db.backends.sqlite3",
+        "NAME": BASE_DIR / "db.sqlite3",
+    }
 }
 
 AUTH_PASSWORD_VALIDATORS = [

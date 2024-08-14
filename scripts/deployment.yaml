@@ -1,0 +1,33 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: pdf-miner-deployment
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: pdf-miner
+  template:
+    metadata:
+      labels:
+        app: pdf-miner
+    spec:
+      containers:
+      - name: pdf-miner
+        image: gcr.io/prudhvir8901/pdf_miner:latest
+        ports:
+        - containerPort: 8000
+        resources:
+          requests:
+            cpu: "50m"
+            memory: "60Mi"
+          limits:
+            cpu: "100m"
+            memory: "100Mi"
+        env:
+          - name: SECRET_KEY
+            value: "django-insecure-d462upu)4h4fx!8vl1%g+^#rjk)m#y^1tsul89bq^ttgni+9k="
+          - name: DEBUG
+            value: "True"
+          # - name: DB_URL
+          #   value: "postgres://passthrough:passthrough@35.233.251.211:5432/pdf_miner"  # GCP PostgreSQL connection string
