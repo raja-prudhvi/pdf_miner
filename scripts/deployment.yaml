@@ -20,7 +20,7 @@ spec:
         resources:
           requests:
             cpu: "50m"
-            memory: "60Mi" 
+            memory: "60Mi"
           limits:
             cpu: "100m"
             memory: "100Mi"
@@ -29,5 +29,5 @@ spec:
             value: "django-insecure-d462upu)4h4fx!8vl1%g+^#rjk)m#y^1tsul89bq^ttgni+9k="
           - name: DEBUG
             value: "True"
-          - name: DB_URL
-            value: "postgres://passthrough:passthrough@35.233.251.211:5432/pdf_miner"
+          # - name: DB_URL
+          #   value: "postgres://passthrough:passthrough@35.233.251.211:5432/pdf_miner"  # GCP PostgreSQL connection string
