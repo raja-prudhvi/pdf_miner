@@ -109,3 +109,4 @@ netcat test was successful. it was weird. So due to time contrainst for now, i w
 ### Final Comments:
 - The entrypoint script was modified to bypass PostgreSQL and use SQLite instead.
 - Repositories will be made private once the assignment is complete.
+- well i could not add GCP certificate manager to use as a certificate authority because i dont have a domain name. ( point to note )
