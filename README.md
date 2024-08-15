@@ -102,11 +102,13 @@ If the application is running successfully, you should see the HTML output indic
 ### Notes:
 - The reason i could not use postgresql db module is because the module needs admin previleges, but my SA does not have it for this assignment.
 
-- Another reason i did not use postgresql which i spinned up already using this https://github.com/raja-prudhvi/pdf_miner_modules/blob/main/postgresql/main.tf  is because, i tried testing the connection from GKE to postgresqldb using netcat, it works like a charm. It was working because i hard-coded (https://github.com/raja-prudhvi/pdf_miner_modules/blob/main/postgresql/main.tf#L27 ) GKE external ip in the authorized users list in the code. ( which is not a fun way of implementing. )
-But i went along with it for the sake of assignment. After spending some time on this, PDF_MINER app was unable to connect even the
-netcat test was successful. it was weird. So due to time contrainst for now, i went with sqlite db.
+- Another reason i did not use postgresql which i spinned up already using this https://github.com/raja-prudhvi/pdf_miner_modules/blob/main/postgresql/main.tf  is because, i tried testing the connection from GKE to postgresqldb using netcat, it works like a charm. It was working because i hard-coded (https://github.com/raja-prudhvi/pdf_miner_modules/blob/main/postgresql/main.tf#L27 ) GKE external node ip in the authorized users list in the code. ( which is not a fun way of implementing. ). But yeah after this the Netcat test was succesfull.
+The problem here is gcp does not let me VPC peer since the servicenetworking-googleapis-com is unable to get enabled due to lack of permissions on my SA.
+
+PDF_MINER app was unable to connect when i set the postgresql connection string in the PDF_MINER app.It was weird. So due to time contrainst for now, i went with sqlite db.
 
 ### Final Comments:
 - The entrypoint script was modified to bypass PostgreSQL and use SQLite instead.
 - Repositories will be made private once the assignment is complete.
-- well i could not sign the certs using GCP certificate manager because i dont have a domain name. ( point to note )
+- well i could not sign the certs using GCP certificate manager because i dont have a domain name. ( point to note  for HTTPS.)
+- We can use cloud armor to make our app secure to achive owasp top 10 vulnerabilites.
